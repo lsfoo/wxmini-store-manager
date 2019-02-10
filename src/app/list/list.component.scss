@@ -1,0 +1,37 @@
+div {}
+
+
+
+
+
+.bottom-bar {
+  padding: 10px;
+  color: white;
+  background: #dc3545;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+.sidebar {
+  border-left: 1px solid #dc3545;
+  background: #fdf4f5
+}
+
+.sidebar button {
+  border-left: 0 !important;
+  border-right: 0 !important
+}
+
+.specs-item {
+  border-top: 1px dashed #dc3545;
+  padding: 10px 0 10px 0;
+}
+
+.product-item {
+
+  border-bottom: 1px double #dc3545;
+  padding-bottom: 8px;
+  padding-top: 8px
+}

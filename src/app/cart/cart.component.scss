@@ -1,0 +1,21 @@
+.cart-modal {
+  position: fixed;
+  bottom: 0px;
+  height: 59%;
+  width: 100%;
+
+  background: #fdf4f5;
+
+  border-top: 1px solid #dc3545;
+  padding: 10px;
+}
+.cart-modal-wapper {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  right: 0;
+  height: 41%;
+  widows: 100%;
+  background: rgba(43, 40, 40, 0.8);
+
+}

@@ -1,0 +1,15 @@
+.alert-wapper{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top:0;
+
+  background: rgba(43, 40, 40, 0.8);
+}
+.alert{
+    font-weight: 700;
+    padding: 20px;
+  background: #fdf4f5;
+    width: 200px
+}

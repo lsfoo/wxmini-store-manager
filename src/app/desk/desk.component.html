@@ -1,0 +1,23 @@
+<div fxLayout="column" fxLayoutAlign="space-between none" fxLayoutGap="20px">
+
+  <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
+
+    <div *ngFor="let item of desks">
+      <button type="button" class="btn btn-outline-secondary" (click)="edit(item)">{{item.name}}</button>
+    </div>
+
+    <div>
+      <button type="button" class="btn btn-outline-primary" (click)="add()">新增</button>
+    </div>
+  </div>
+  
+  <div class="input-group" *ngIf="desk.name" >
+    <input type="text" class="form-control" name="name" [(ngModel)]="desk.name" id="name" placeholder="例如：1号桌"
+      aria-label="">
+    <span class="input-group-btn">
+      <button class="btn btn-outline-primary" (click)="save()" type="button" aria-label="">保存</button>
+      <button *ngIf="desk.id>0" class="btn btn-outline-danger" (click)="delete()" type="button" aria-label="">删除</button>
+    </span>
+  </div>
+
+</div>

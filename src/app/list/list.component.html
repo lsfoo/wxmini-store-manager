@@ -1,0 +1,94 @@
+<div fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="gappx" style="height:100%">
+  <div fxFlex="84%">
+    <div fxLayoutGap="10px" style="padding: 5px;overflow-y: auto;height: 100%;">
+      <div *ngFor="let item of products" fxLayout="row" fxLayoutGap="10px" class="product-item">
+        <div fxFlex="41%">
+
+          <img style="width: 100%" src="{{item.thumbnail}}" alt="" srcset="">
+
+        </div>
+        <div fxFlex="59%">
+          <div fxLayout="column" fxLayoutAlign="space-around none" fxLayoutGap="gappx">
+            <div style="font-weight: 700">
+              {{item.name}}({{item.unit.name}})
+            </div>
+            <small>
+              {{item.description}}
+            </small>
+            <small> 销量 : {{item.id}} </small>
+            <div>
+             <div *ngFor="let item1 of item.specs" fxLayout="row"
+              fxLayoutAlign="end none"
+                class="specs-item">
+                <div fxFlex="38%">
+                  {{item1.name}}
+                </div>
+                <div fxFlex="22%">
+                  <i class="fa fa-jpy" aria-hidden="true"></i> {{item1.price}}
+                </div>
+                <div fxFlex="40%">
+                  <div fxLayout="row" fxLayoutAlign="end center">
+
+                    <span *ngFor="let item2 of orderForm.orderDetails">
+                      <span *ngIf="item2.specs.id == item1.id">
+                        <i class="fa fa-minus-square-o" aria-hidden="true" (click)="changeOrderDetailsCount(item1,2)"></i>
+                        <span >
+                        {{item2.count}}
+                        </span>
+                      </span>
+                    </span>
+
+                    <span style="margin-left:6px">
+                      <i class="fa fa-plus-square-o" aria-hidden="true" (click)="changeOrderDetailsCount(item1,1)"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+  <div fxFlex="16%" style="height: 100%">
+    <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="0px" style="height: 100%" class="sidebar">
+      <div class="btn-group-vertical btn-group-sm" role="group" aria-label="">
+        <button type="button" class="btn btn-outline-danger" (click)="getAll()">全部</button>
+        <button type="button" class="btn btn-outline-danger" *ngFor="let item of categories" (click)="getListByCategory(item)">{{item.name}}</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!--底部 开始-->
+<div class="bottom-bar" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="gappx">
+  <div>
+    <span>
+      <i class="fa fa-jpy" aria-hidden="true">
+       {{orderForm.totalMoney}}
+      </i>
+    </span>
+  </div>
+  
+  <div>
+    <button class="btn btn-outline-light btn-sm"  (click)="openCartModal()">
+            购物车 <span class="badge badge-light" *ngIf="orderForm.orderDetails.length>0" > {{orderForm.orderDetails.length}}</span>
+    </button>
+  </div>
+</div>
+<!-- 底部 结束 -->
+
+  <app-cart *ngIf="showCart" [orderForm]="orderForm" (hide_emitter)="closeCartModal()" 
+  (pay_in_cash_emitter) = 'saveOrder(1)'
+  (pay_in_wx_emitter)="wxPay()"
+  ></app-cart>
+
+<app-loading *ngIf="loading">
+</app-loading>
+<app-alert *ngIf="alert" [msg]="alertMsg" (click)="alert=false"  ></app-alert>

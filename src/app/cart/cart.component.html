@@ -1,0 +1,55 @@
+<div class="cart-modal-wapper" (click)="closeModal()" >
+
+</div>
+<div fxLayout="column" fxLayoutGap="gappx" class="cart-modal">
+  <div fxFlex="16%">
+    <div fxLayout="row" fxLayoutAlign="space-between stretch" fxLayoutGap="30px" >
+     <div  >
+        <span>
+        <i class="fa fa-jpy" aria-hidden="true"></i>
+           {{orderForm.totalMoney}}
+        </span>
+      </div>
+        <div class="btn-group" role="group" aria-label="">
+        <button type="button" class="btn btn-outline-danger btn-sm" (click)="clearCart()">清空购物车</button>
+        <button type="button" class="btn btn-outline-danger btn-sm" (click)="closeModal()">关闭</button>
+        </div>
+ 
+
+    </div>
+
+  </div>
+  <div fxFlex="67%" style="overflow: auto">
+
+    <div *ngFor="let item of orderForm.orderDetails" fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="gappx">
+
+      <div fxFlex="40%" >
+        {{item.specs.product.name}}
+      </div>
+      <div fxFlex="20%">
+        {{item.specs.name}}
+      </div>
+      <div fxFlex="20%">
+        <i class="fa fa-jpy" aria-hidden="true"></i>
+        {{item.specs.price}}
+      </div>
+      <div fxFlex="20%" style="text-align: right" >
+        <i class="fa fa-minus-square-o" aria-hidden="true" (click)="changeOrderDetailsCount(item.specs,2)"></i>
+        {{item.count}}
+        <i class="fa fa-plus-square-o" aria-hidden="true" (click)=" changeOrderDetailsCount(item.specs,1)"></i>
+      </div>
+    </div>
+  </div>
+  <div fxFlex="13%" >
+
+      <button *ngIf="orderForm.orderDetails.length==0" 
+       style="width:100%" type="button"
+        class="btn btn-danger" (click)="closeModal()">去添加</button>
+    <div fxLayout="row" fxLayoutAlign="center end" fxLayoutGap="10px" *ngIf="orderForm.orderDetails.length>0">
+
+      <button style="width:100%" type="button" class="btn btn-danger" (click)="payInWx()">支付</button>
+      <button *ngIf="false"  type="button" class="btn btn-outline-danger" (click)="payInCash()">现金支付</button>
+    </div>
+  </div>
+
+</div>
