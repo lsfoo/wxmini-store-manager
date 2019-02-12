@@ -40,4 +40,11 @@ export class JwtService {
       this.$sessionStorage.store('authenticationToken', jwt)
     }
   }
+  logout(): Observable<any> {
+    return new Observable(observer => {
+      this.$localStorage.clear('authenticationToken')
+      this.$sessionStorage.clear('authenticationToken')
+      observer.complete()
+    })
+  }
 }

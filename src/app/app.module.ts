@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { FormsModule } from '@angular/forms'
-
+import { ModalModule } from 'ngx-bootstrap'
 import { NgxWebstorageModule } from 'ngx-webstorage'
 
 import { AppRoutingModule } from './app-routing.module'
@@ -19,8 +19,9 @@ import { LoadingComponent } from './loading/loading.component'
 import { AlertComponent } from './alert/alert.component'
 import { DeskComponent } from './desk/desk.component'
 import { HomeComponent } from './home/home.component'
-import { ProductModule } from './product/product.module';
+import { ProductModule } from './product/product.module'
 import { LoginComponent } from './login/login.component'
+import { NavComponent } from './nav/nav.component'
 export function apiConfigFactory(): Configuration {
   const params: ConfigurationParameters = {
     // set configuration parameters here.
@@ -37,7 +38,8 @@ export function apiConfigFactory(): Configuration {
     AlertComponent,
     DeskComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ export function apiConfigFactory(): Configuration {
     ApiModule.forRoot(apiConfigFactory),
     NgxWebstorageModule.forRoot(),
     FormsModule,
-    ProductModule
+    ProductModule,
+    ModalModule.forRoot()
   ],
   providers: [
     {

@@ -24,13 +24,7 @@ export class AuthExpiredInterceptor implements HttpInterceptor {
         (err: any) => {
           if (err instanceof HttpErrorResponse) {
             if (err.status === 401) {
-              console.log('jwt超时重新获取')
-              const loginVM = {
-                username: 'admin',
-                password: 'admin',
-                rememberMe: true
-              }
-              this.jwtService.login(loginVM)
+              this.jwtService.logout()
             }
           }
         }
