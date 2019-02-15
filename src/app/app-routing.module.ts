@@ -15,7 +15,11 @@ const routes: Routes = [
     component: DeskComponent
   },
   { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'category',
+    loadChildren: './category/category.module#CategoryModule'
+  }
 ]
 
 @NgModule({

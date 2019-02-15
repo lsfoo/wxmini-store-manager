@@ -31,5 +31,11 @@ export class NavComponent implements OnInit {
     this.bsModalRef = this.bsModalService.show(LoginComponent)
     this.bsModalRef.content.closeBtnName = 'Close'
   }
-  isAuthenticated() {}
+  isAuthenticated() {
+    if (this.jwtService.getToken()) {
+      return true
+    } else {
+      return false
+    }
+  }
 }

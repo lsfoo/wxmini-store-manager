@@ -21,7 +21,8 @@ import { DeskComponent } from './desk/desk.component'
 import { HomeComponent } from './home/home.component'
 import { ProductModule } from './product/product.module'
 import { LoginComponent } from './login/login.component'
-import { NavComponent } from './nav/nav.component'
+import { NavComponent } from './nav/nav.component';
+import { CategoryModule } from './category/category.module'
 export function apiConfigFactory(): Configuration {
   const params: ConfigurationParameters = {
     // set configuration parameters here.
@@ -51,7 +52,8 @@ export function apiConfigFactory(): Configuration {
     NgxWebstorageModule.forRoot(),
     FormsModule,
     ProductModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    CategoryModule
   ],
   providers: [
     {
