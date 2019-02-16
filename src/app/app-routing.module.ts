@@ -1,3 +1,4 @@
+import { CategoryModule } from './category/category.module'
 import { LoginComponent } from './login/login.component'
 import { HomeComponent } from './home/home.component'
 import { DeskComponent } from './desk/desk.component'
@@ -18,7 +19,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: 'category',
-    loadChildren: './category/category.module#CategoryModule'
+    loadChildren: () => CategoryModule
   }
 ]
 

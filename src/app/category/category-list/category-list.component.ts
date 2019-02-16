@@ -1,6 +1,7 @@
 import { CategoryResourceService } from './../../../../shared/api/categoryResource.service'
 import { Component, OnInit } from '@angular/core'
 import { Category } from 'shared'
+import { getAllLifecycleHooks } from '@angular/compiler/src/lifecycle_reflector'
 
 @Component({
   selector: 'app-category-list',
@@ -11,7 +12,9 @@ export class CategoryListComponent implements OnInit {
   constructor(private categoryResourceService: CategoryResourceService) {}
   categories: Array<Category> = []
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getList()
+  }
   getList() {
     this.categoryResourceService
       .getAllCategoriesUsingGET()
